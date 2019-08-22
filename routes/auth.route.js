@@ -7,7 +7,7 @@ router.post('/signup', async (req, res, next) => {
     try {
         let password = req.body.password;
         const user = await AuthService.signUp(req.body);
-        const token = await AuthService.login({username: user.username, password: req.body.password});
+        const token = await AuthService.login({username: user.username, password: password});
         res.json(util.SuccessResponse(token));
     }
     catch (err) {
