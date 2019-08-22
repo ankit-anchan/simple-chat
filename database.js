@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const db = {};
 
 db.connect = () => {
-    mongoose.connect(config.db.url).then(() => {
+    mongoose.connect(config.db.url, { useNewUrlParser: true }).then(() => {
         console.log('connected to mongo db..');
     }).catch((err) => {
         console.log('Error while connecting to mongodb');

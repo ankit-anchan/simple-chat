@@ -11,6 +11,7 @@ database.connect();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var authRouter = require('./routes/auth.route');
 
 var app = express();
 
@@ -20,8 +21,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/v1.0/', indexRouter);
+app.use('/api/v1.0/users', usersRouter);
+app.use('/api/v1.0/auth', authRouter);
 
 app.listen(port, () => {
     console.log('app started on port ' + port);

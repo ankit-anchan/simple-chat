@@ -7,6 +7,7 @@ const MessageSchema = new Schema({
     message: {type: String},
     media_url: {type: String},
     content_type: {type: String},
+    sent_by: {type: Schema.Types.ObjectId, ref: 'USER'},
     room: {type: Schema.Types.ObjectId, ref: 'ROOM'},
     created_at: { type: Date, default: Date.now },
     updated_at: { type: Date, default: Date.now }
