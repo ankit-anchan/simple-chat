@@ -1,5 +1,12 @@
 const config = {};
 
+config.test = {
+    db: {
+        url: 'mongodb://localhost/simple_chat'
+    },
+    secret_key: 'abcd'
+};
+
 config.development = {
     db: {
         url: 'mongodb://localhost/simple_chat'
@@ -20,5 +27,4 @@ config.production = {
     },
     secret_key: 'abcd'
 };
-
 module.exports = config;

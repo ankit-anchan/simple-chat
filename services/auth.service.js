@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
 const UserRepository = require('../repository/user.repository');
 const ApplicationError = require('../common/error');
-const config = require('../config')[process.env.NODE_ENV];
+const config = require('../config');
 
 const AuthService = {};
 
@@ -16,7 +16,7 @@ AuthService.login = async (loginPayload) => {
     if (!bcrypt.compareSync(loginPayload.password, user.password)) {
         throw new ApplicationError.Unauthorized('Incorrect Password');
     }
-    return jwt.sign({ id: user._id,username: user.mobile_number }, config.secret_key, {
+    return jwt.sign({ id: user._id,username: user.mobile_number }, config[process.env.NODE_ENV].secret_key, {
         expiresIn: 604800 // expires in 24 hours
     });
 };
